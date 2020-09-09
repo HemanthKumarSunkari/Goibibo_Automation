@@ -12,7 +12,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -22,6 +21,7 @@ import org.testng.annotations.BeforeMethod;
 import com.goibibo.util.TestUtil;
 import com.goibibo.util.WebEventListener;
 
+import io.github.bonigarcia.wdm.DriverManagerType;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestBase {
@@ -57,9 +57,11 @@ public class TestBase {
 			ChromeOptions options = new ChromeOptions(); 
 			options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
 			driver = new ChromeDriver(options);
-		} else if (browserName.equalsIgnoreCase("FireFox")) {
-			WebDriverManager.firefoxdriver().setup();
-			driver = new FirefoxDriver();
+		} else if (browserName.equalsIgnoreCase("safari")) {
+			DriverManagerType safari = DriverManagerType.SAFARI;
+			WebDriverManager.getInstance(safari).setup();
+			Class<?> safariClass =  Class.forName(safari.browserClass());
+			driver = (WebDriver) safariClass.getDeclaredConstructor().newInstance();
 		}
 		 js = (JavascriptExecutor) driver;
 		driver.manage().window().maximize();
