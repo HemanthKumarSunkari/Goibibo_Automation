@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2020-09-10T05:17:42Z" name="Default suite" finished-at="2020-09-10T05:18:48Z" duration-ms="66466">
+  <suite started-at="2020-09-10T06:06:16Z" name="Default suite" finished-at="2020-09-10T06:07:10Z" duration-ms="54534">
     <groups>
     </groups>
-    <test started-at="2020-09-10T05:17:42Z" name="Default test" finished-at="2020-09-10T05:18:48Z" duration-ms="66466">
+    <test started-at="2020-09-10T06:06:16Z" name="Default test" finished-at="2020-09-10T06:07:10Z" duration-ms="54534">
       <class name="com.goibibo.testcases.SingleTripTest">
-        <test-method is-config="true" signature="initialization()[pri:0, instance:com.goibibo.testcases.SingleTripTest@13b6aecc]" started-at="2020-09-10T05:17:42Z" name="initialization" finished-at="2020-09-10T05:17:59Z" duration-ms="17112" status="PASS">
+        <test-method is-config="true" signature="initialization()[pri:0, instance:com.goibibo.testcases.SingleTripTest@13b6aecc]" started-at="2020-09-10T06:06:16Z" name="initialization" finished-at="2020-09-10T06:06:34Z" duration-ms="18625" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initialization -->
-        <test-method signature="SingleTripPaymentTest()[pri:0, instance:com.goibibo.testcases.SingleTripTest@13b6aecc]" started-at="2020-09-10T05:17:59Z" name="SingleTripPaymentTest" finished-at="2020-09-10T05:18:43Z" duration-ms="44482" status="PASS">
+        <test-method signature="SingleTripPaymentTest()[pri:0, instance:com.goibibo.testcases.SingleTripTest@13b6aecc]" started-at="2020-09-10T06:06:34Z" name="SingleTripPaymentTest" finished-at="2020-09-10T06:07:06Z" duration-ms="31664" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- SingleTripPaymentTest -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.goibibo.testcases.SingleTripTest@13b6aecc]" started-at="2020-09-10T05:18:43Z" name="tearDown" finished-at="2020-09-10T05:18:48Z" duration-ms="4787" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.goibibo.testcases.SingleTripTest@13b6aecc]" started-at="2020-09-10T06:07:06Z" name="tearDown" finished-at="2020-09-10T06:07:10Z" duration-ms="4172" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
