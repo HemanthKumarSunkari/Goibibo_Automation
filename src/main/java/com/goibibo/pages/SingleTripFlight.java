@@ -32,9 +32,11 @@ public class SingleTripFlight extends TestBase {
 	public void turnPriceToggleUp() {
 		String clName = price.getAttribute("class");
 		if (!clName.contains("icon-arrow2-up")) {
+			System.out.println("Intially , Prices are starting from highest fare value");
 			price.click();
+			System.out.println("Now , Prices are going to start with lowest fare value");
 		}
-		System.out.println("Prices are starting from least fare value");
+		System.out.println("Prices are started from least fare value");
 	}
 
 	public int findCheapFlightFare() {
@@ -42,8 +44,9 @@ public class SingleTripFlight extends TestBase {
 		int min = 0, max = 0;
 
 		for (int i = 1; i < len; i++) {
-			min = Integer.parseInt(fares.get(i - 1).toString());
-			max = Integer.parseInt(fares.get(i).toString());
+			min = Integer.parseInt(fares.get(i - 1).getText().replaceAll(",", ""));
+			max = Integer.parseInt(fares.get(i).getText().replaceAll(",", ""));
+			
 			if (max < min) {
 				int temp = min;
 				min = max;
@@ -76,8 +79,8 @@ public class SingleTripFlight extends TestBase {
 
 		turnPriceToggleUp();
 
-		System.out.println("Cheapest fare of among all Flight = " + fares.get(0));
-		System.out.println("Shortest duration among all flights = " + duration.get(0));
+		System.out.println("Cheapest fare of among all Flight = ₹" + findCheapFlightFare());
+		System.out.println("Shortest duration among all flights = " + duration.get(0).getText());
 		bookBtn.get(0).click();
 
 		return new flightReviewPage();

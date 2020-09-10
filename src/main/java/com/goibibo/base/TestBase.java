@@ -12,6 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -21,7 +22,6 @@ import org.testng.annotations.BeforeMethod;
 import com.goibibo.util.TestUtil;
 import com.goibibo.util.WebEventListener;
 
-import io.github.bonigarcia.wdm.DriverManagerType;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestBase {
@@ -54,23 +54,21 @@ public class TestBase {
 
 		if (browserName.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
-			ChromeOptions options = new ChromeOptions(); 
-			options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+			ChromeOptions options = new ChromeOptions();
+			options.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
 			driver = new ChromeDriver(options);
 		} else if (browserName.equalsIgnoreCase("safari")) {
-			DriverManagerType safari = DriverManagerType.SAFARI;
-			WebDriverManager.getInstance(safari).setup();
-			Class<?> safariClass =  Class.forName(safari.browserClass());
-			driver = (WebDriver) safariClass.getDeclaredConstructor().newInstance();
+			driver = new SafariDriver();
+
 		}
-		 js = (JavascriptExecutor) driver;
+		js = (JavascriptExecutor) driver;
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
-		
+
 		e_driver = new EventFiringWebDriver(driver);
-		eventListener  = new WebEventListener();
+		eventListener = new WebEventListener();
 		driver = e_driver.register(eventListener);
 
 		driver.get(prop.getProperty("url"));
